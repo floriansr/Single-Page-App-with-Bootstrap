@@ -9,8 +9,6 @@ const GameList = (argument = "") => {
         finalURL = url + "?search=" + argument;
       }	
 
-      console.log(finalURL)
-
       fetch(`${finalURL}`)
         .then((response) => response.json())
         .then((response) => {
@@ -19,12 +17,15 @@ const GameList = (argument = "") => {
               })
         .then((response) => {
           response.results.forEach((article) => {
+
             articles += `
-                  <div class="cardGame">
-                    <h3>${article.name}</h3>
-                    <h2>${article.released}</h2>
-                    <a href = "#gamedetail/${article.id}">${article.id}</a>
-                  </div>
+                  <a href="#gamedetail/${article.id}" class="cardGame">
+                          <img class="card-img-top" src="${article.background_image}" alt="Card image cap">
+                      <div class="card-body">
+                          <h2 class="card-text">${article.name}</h2>
+                          <p class="text-center">${article.released}</p>
+                      </div>
+                  </a>
                 `;
           });
           document.querySelector(".page-list .articles").innerHTML = articles;

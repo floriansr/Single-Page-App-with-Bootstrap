@@ -27,7 +27,7 @@ const Home = (argument = "") => {
                       <img class="card-img-top" src="${article.background_image}" alt="Card image cap">
                   <div class="card-body">
                       <h2 class="card-text">${article.name}</h2>
-                      <p>${article.released}</p>
+                      <p class="text-center">${article.released}</p>
                   </div>
                 </a>
                 `;
