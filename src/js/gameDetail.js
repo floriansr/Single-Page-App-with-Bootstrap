@@ -8,20 +8,47 @@ const GameDetail = (id) => {
 
       fetch(`${finalURL}`)
         .then((response) => response.json())
-        // .then((response) => {
-        //       console.log(response);
-        //       return response;
-        //       })
         .then((response) => {
-          let { name, released, description, clip, background_image, slug } = response;
+              console.log(response);
+              return response;
+              })
+        .then((response) => {
+          let { name, released, description, genres, clip, background_image, slug, website, ratings, rating, stores, tags } = response;
 
-          let articleDOM = document.querySelector(".page-detail .article");
-          video.src = clip.clip;
-          image.src = background_image;
+              genres.slice(0, 4).forEach((x) => {
+              genres += `
+              <a href="#gamelist/genres=${x.slug}">${x.name}</a> `;
+              })
 
-          articleDOM.querySelector("h3.title").innerHTML = name;
-          articleDOM.querySelector("p.release-date span").innerHTML = released;
-          articleDOM.querySelector("p.description").innerHTML = description;
+              tags.slice(0, 4).forEach((x) => {
+              tags += `
+              <a href="#gamelist/tags=${x.slug}">${x.name}</a> `;
+              })
+
+            stores.forEach((store) => {           
+            stores += `<a href="${store.url}" target="_blank">${store.store.name}</a>, `;
+            });
+
+            let reducer = (accumulator, currentValue) => accumulator + currentValue;
+            let counts = ratings.map((x) => x.count);
+            let numberRatings = counts.reduce(reducer);
+
+            let articleDOM = document.querySelector(".page-detail .article");
+            video.src = clip.clip;
+            image.src = background_image;
+
+            articleDOM.querySelector("h3.title").innerHTML = name;
+            articleDOM.querySelector("p.release-date span").innerHTML = released;
+            articleDOM.querySelector("p.description").innerHTML = description;
+            articleDOM.querySelector("a.website").href = website;
+            articleDOM.querySelector("p.ratings").innerHTML += numberRatings;
+            articleDOM.querySelector("p.rating").innerHTML += rating;
+            articleDOM.querySelector("p.stores").innerHTML += stores;
+            articleDOM.querySelector("p.tags").innerHTML += tags;
+            articleDOM.querySelector("p.genres").innerHTML += genres;
+
+
+
 
           fetchScreen(slug);
           fetchYoutube(slug);
@@ -119,7 +146,15 @@ const GameDetail = (id) => {
               <p class="release-date text-center">Release date : <span></span></p>
             <hr style="width: 50%">
               <p class="description text-center"></p>
+              <p class="ratings text-center">Votes: </p>
+              <p class="rating text-center">Score sur 5: </p>
+              <p class="stores text-center">Stores : </p>
+              <p class="tags text-center">Tags : </p>
+              <p class="genres text-center">Genres : </p>
+
+
             <hr style="width: 50%">
+            <a class="website" href="" target="_blank">Go to website</a>
         </div>
 
         <video controls="controls" src="" id="video"></video>

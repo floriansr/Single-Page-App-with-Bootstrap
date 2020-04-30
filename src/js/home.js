@@ -20,6 +20,8 @@ const Home = (argument = "") => {
 				    	return response;
 				    	})
         .then((response) => {
+
+
           response.results.forEach((article, i) => {
 
             articles += `
@@ -42,8 +44,6 @@ const Home = (argument = "") => {
           console.log(response.results)
           response.results.forEach((article, i) => {
             
-            console.log(article.parent_platforms)
-
             if (article.parent_platforms === undefined) {
               return
             }
@@ -78,7 +78,6 @@ const Home = (argument = "") => {
     fetchList(`https://api.rawg.io/api/games?dates=${time},${future_time}&&page_size=27`);
     //game à venir sur un an, page_list en fetch 27, découpage par 9 à prédéfinir
   };
-// ordering=-rating&page=1&page_size=${entryLimit}
 
   const render = () => {
     gameContent.innerHTML = `
