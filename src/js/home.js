@@ -1,4 +1,5 @@
 import moment from "moment";
+let pageSizeNumber = 9;
 
 const Home = (argument = "") => {
 
@@ -10,9 +11,7 @@ const Home = (argument = "") => {
 
     const fetchList = (url) => {
       let URL = url;
-
-      console.log(URL);
-
+      
       fetch(`${URL}`)
         .then((response) => response.json())
         .then((response) => {
@@ -75,8 +74,7 @@ const Home = (argument = "") => {
 
     };
 
-    fetchList(`https://api.rawg.io/api/games?dates=${time},${future_time}&&page_size=27`);
-    //game à venir sur un an, page_list en fetch 27, découpage par 9 à prédéfinir
+    fetchList(`https://api.rawg.io/api/games?dates=${time},${future_time}&ordering=-added&page=1&page_size=${pageSizeNumber}`);
   };
 
   const render = () => {
@@ -91,5 +89,19 @@ const Home = (argument = "") => {
 
   render();
 };
+
+const pageSize = () => {
+    if (pageSizeNumber < 18) {
+        pageSizeNumber += 9;
+        Home();
+    } else {
+        pageSizeNumber += 9;
+        document.getElementById('see-more-button').hidden = true;
+        Home();
+    }
+}
+
+
+document.getElementById('see-more-button').addEventListener('click', pageSize)
 
 export default Home;
