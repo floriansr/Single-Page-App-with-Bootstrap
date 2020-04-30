@@ -28,11 +28,18 @@ module.exports = (env) => {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"],
+            presets: ["@babel/preset-env", "@babel/preset-flow"],
           },
         },
       },
-      
+      {
+          test:  /\.json$/,
+          exclude: /node_modules/,
+          use: {
+            // included by default (https://webpack.js.org/loaders/json-loader/)
+            loader: 'json-loader' 
+          }
+        },
       {
         // On applique notre règle pour tous les fichiers .sass, .scss et .cs
         test: /\.(sa|sc|c)ss$/,

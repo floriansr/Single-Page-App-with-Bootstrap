@@ -9904,6 +9904,7 @@ form {
 }
 
 h3 {
+  text-align: center;
   color: white;
   font-family: "Big Noodles";
 }
@@ -9920,6 +9921,7 @@ h1 {
 }
 
 h2 {
+  text-align: center;
   color: #040B1C;
   font-family: "Big Noodles";
 }
@@ -9942,6 +9944,20 @@ a {
 
 video {
   width: 100%;
+  border: 1px solid #ACACAC;
+  border-radius: 0.25rem;
+}
+
+/*div {
+	.img {
+		width: 100%;
+		object-fit: cover;
+		margin-bottom: 2rem;
+	}
+}*/
+hr {
+  width: 80%;
+  border: 1px solid #ACACAC;
 }
 
 .container .page-list .articles {
@@ -9969,21 +9985,46 @@ video {
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
-@media (min-width: 300px) and (max-width: 500px) {
-  .container .page-list .articles .cardGame .cardGame {
-    flex: 0%;
-    max-width: 0%;
-  }
-  .container .page-list .articles .cardGame .cardGame .card-img-top {
-    object-fit: cover;
-  }
-}
 .container .page-list .articles .cardGame .card-img-top {
   object-fit: cover;
 }
 .container .page-detail .article {
   color: #ACACAC;
   font-family: "Big Noodles";
+}
+.container .page-detail .article .bigscreen {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 2rem;
+}
+.container .page-detail .space-between {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.container .page-detail .space-between .screenshots {
+  flex: 0 0 48%;
+  max-width: 48%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border: 1px solid #ACACAC;
+  border-radius: 0.25rem;
+}
+.container .page-detail .space-between .cardGame {
+  position: relative;
+  flex-direction: column;
+  /*place verticalement le contenu de la card */
+  word-wrap: break-word;
+  background-color: #ACACAC;
+  background-clip: border-box;
+  /*L'arrière-plan s'étend jusqu'à la limite externe de la bordure.*/
+  border: 1px solid #ACACAC;
+  border-radius: 0.25rem;
+  flex: 0 0 30%;
+  max-width: 30%;
+  margin-bottom: 2rem;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 
 /*menu de la recherche avancée*/
@@ -10030,4 +10071,16 @@ video {
 .btn-base-1:hover {
   background-color: #0127ff;
   color: #FFF;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.white {
+  color: white;
+}
+
+.metallic_grey {
+  color: #ACACAC;
 }
