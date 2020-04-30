@@ -1,14 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>un simple exercice</title>
+	<title>The Hyper Progame</title>
 	<link rel="stylesheet" href="dist/bundle.css" />
 </head>
+
+<header>
+	<a href="#">The Hyper Progame</a>
+			
+	<!-- Searchbar -->
+	<form>
+		<label>Curieux de reconnaître un jeu/dev/éditeur qui vous a marqué (?), c'est par </label>
+        <input type="text" class="form-control form-control-lg" placeholder="ICI !" id="searchbar">
+    </form>
+</header>
+
 <body>
+	<div class="container">
 
-	<div id="alert"></div>
+		<!-- Extended dropdown -->
+		<div class="dropdown">
+		    <a href="#" class="btn btn-base-1 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton">
+		        Recherche avancée..
+		    </a>
 
-	<p>salut la famille</p>
+		    	<!-- Accessibilité -->
+		    	<!-- aria-haspopup= »true » pour indiquer qu’il y a un menu déroulant -->
+				<!-- aria-expanded= »false » pour indiquer que le menu déroulant n’est pas affiché (et évidemment true s’il est affiché). -->
+
+		    <div class="dropdown-menu dropdown-extend-menu" role="menu" aria-labelledby="dropdownMenuButton">
+
+		    	<!-- Dans ce code au niveau du menu déroulant, dans la balise <div> on a prévu aria-labelledby= »dropdownMenuButton», ce qui signifie simplement qu’il faut se référer à l’élément qui a cet identifiant, en l’occurrence le bouton. Concrètement cela signifie que ce menu déroulant correspond à « Filtre de recherche ». -->
+
+		        <div class="row">
+		            <div class="col-md-3">
+		    			<a class="dropdown-item" href="#">Incoming movies</a>
+		    			<a class="dropdown-item" href="#gamelist">Legends</a>
+		            </div>
+		            <div class="col-md-3">
+		            	<a class="dropdown-item" href="#gamelist/borderlands">Borderlands</a>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	    
+		<!-- Section -->
+		<section id="gameContent"></section>
+
+	</div>
 </body>
 	<script src="dist/bundle.js"></script>
 </html>

@@ -9879,11 +9879,147 @@ h3 {
     border-color: #dee2e6;
   }
 }
-p {
-  color: #ff1414;
+header {
+  padding: 1rem 2rem 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ACACAC;
+}
+
+input {
+  border: 1px solid #CC231C;
+  height: 2rem;
+  border-radius: 0.5rem;
+  width: 100%;
   font-family: "Big Noodles";
 }
 
 body {
-  background-image: url(images/2c8daa943b9cf38562287f97d12e3b4a.jpg);
+  background-color: #040B1C;
+}
+
+form {
+  width: 50%;
+}
+
+h3 {
+  color: #040B1C;
+  font-family: "Big Noodles";
+}
+
+header a {
+  font-size: 2rem;
+  color: #040B1C;
+  font-family: "Big Noodles";
+}
+
+h1 {
+  color: #040B1C;
+  font-family: "Big Noodles";
+}
+
+label {
+  color: #040B1C;
+  font-family: "Big Noodles";
+  width: 100%;
+}
+
+p {
+  color: #040B1C;
+  font-family: "Big Noodles";
+}
+
+a {
+  font-family: "Big Noodles";
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+video {
+  width: 100%;
+}
+
+div h3 {
+  color: #040B1C;
+  font-family: "Big Noodles";
+}
+
+.container .page-list .articles {
+  display: flex;
+  flex-wrap: wrap;
+  /*Les éléments flexibles sont disposé sur plusieurs lignes.*/
+  position: relative;
+  justify-content: space-between;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.container .page-list .articles .cardGame {
+  position: relative;
+  flex-direction: column;
+  /*place verticalement le contenu de la card */
+  word-wrap: break-word;
+  background-color: #ACACAC;
+  background-clip: border-box;
+  /*L'arrière-plan s'étend jusqu'à la limite externe de la bordure.*/
+  border: 1px solid #ACACAC;
+  border-radius: 0.25rem;
+  flex: 0 0 30%;
+  max-width: 30%;
+  margin-bottom: 2rem;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.container .page-list .articles .cardGame .card-img-top {
+  object-fit: cover;
+}
+.container .page-detail .article {
+  color: #ACACAC;
+  font-family: "Big Noodles";
+}
+
+/*menu de la recherche avancée*/
+.dropdown-menu {
+  margin: 0;
+  border: 0;
+  font-size: 0.9rem;
+  border-radius: 1px;
+  line-height: 1;
+  min-width: 12rem;
+  box-shadow: 0 5px 25px 0 #ACACAC;
+}
+
+/*allongement du menu de la recherche avancée*/
+.dropdown-extend-menu {
+  width: 100%;
+}
+
+/*allongement du bouton de la recherche avancée*/
+.dropdown a {
+  width: 100%;
+}
+
+.btn {
+  position: relative;
+  font-size: 0.875rem;
+  font-family: "Big Noodles";
+  font-style: normal;
+  text-align: center;
+  border-radius: 2px;
+  outline: none;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.btn-base-1 {
+  color: #FFF;
+  background-color: #3452ff;
+  border: 1px solid #3452ff;
+}
+
+.btn-base-1:active,
+.btn-base-1:focus,
+.btn-base-1:hover {
+  background-color: #0127ff;
+  color: #FFF;
 }

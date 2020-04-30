@@ -1,4 +1,4 @@
-### Need a Good Repositery !!
+### Need a Good Repository !!
 
 ##Folder Sort
 On va avoir une config Webpack by NodeJS au poil! Accompagné de NPM, les scripts pour les variables d'environnement et Bootstrap inclu !

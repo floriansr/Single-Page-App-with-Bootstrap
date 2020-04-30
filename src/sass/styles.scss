@@ -5,13 +5,169 @@
 
 @import "~bootstrap/scss/bootstrap";
 
-$red: rgb(255, 20, 20);
+$white: rgb(255, 255, 255);
+$metallic_grey : #ACACAC;
+$red: #CC231C;
+$brown : #4C4444;
+$deep_ocean: #040B1C;
+$lightgrey: #E4E4E4;
 
-p {
-  color: $red;
-  font-family: "Big Noodles";
+header {
+	padding: 1rem 2rem 1rem 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: $metallic_grey;
+}
+
+input {
+	border: 1px solid $red;
+	height: 2rem;
+	border-radius: 0.5rem;
+	width: 100%;
+	font-family: "Big Noodles";
 }
 
 body {
-  background-image: url("../img/cat.jpg");
+	background-color: $deep_ocean;
+}
+
+form {
+    width: 50%;
+}
+
+h3 {
+	color: $deep_ocean;
+	font-family: "Big Noodles";
+}
+
+
+header {
+
+	 a {
+	font-size: 2rem;
+	color: $deep_ocean;
+	font-family: "Big Noodles";
+	}
+}
+
+h1 {
+	color: $deep_ocean;
+	font-family: "Big Noodles";
+}
+
+label {
+	color: $deep_ocean;
+	font-family: "Big Noodles";
+	width: 100%;
+}
+
+p {
+  color: $deep_ocean;
+  font-family: "Big Noodles";
+}
+
+a {
+	font-family: "Big Noodles";
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+video {
+	width: 100%;
+}
+
+div {
+ h3 {
+	color: $deep_ocean;
+	font-family: "Big Noodles";
+	}
+}
+
+.container {
+
+	.page-list .articles {
+
+			display: flex;
+			flex-wrap: wrap; /*Les éléments flexibles sont disposé sur plusieurs lignes.*/
+			position: relative;
+			justify-content: space-between;
+		  	padding-right: 15px;
+		  	padding-left: 15px;
+
+			.cardGame {
+			  position: relative;
+			  flex-direction: column; /*place verticalement le contenu de la card */
+			  word-wrap: break-word;
+			  background-color: $metallic_grey;
+			  background-clip: border-box; /*L'arrière-plan s'étend jusqu'à la limite externe de la bordure.*/
+			  border: 1px solid $metallic_grey;
+			  border-radius: 0.25rem;
+			  flex: 0 0 30%;
+			  max-width: 30%;
+			  margin-bottom: 2rem;
+			  -webkit-transition: all 0.3s linear;
+	  		  transition: all 0.3s linear;
+
+	  		  .card-img-top {
+	  		  	object-fit: cover;
+	  		  }
+			}
+	}
+
+	.page-detail {
+		.article {
+				 color: $metallic_grey;
+  				font-family: "Big Noodles";
+		}
+	}
+}
+
+/*menu de la recherche avancée*/
+.dropdown-menu {
+	margin: 0;
+	border: 0;
+	font-size: 0.9rem;
+	border-radius: 1px;
+	line-height: 1;
+	min-width: 12rem;
+	box-shadow: 0 5px 25px 0 $metallic_grey;
+}
+
+/*allongement du menu de la recherche avancée*/
+.dropdown-extend-menu {
+  width: 100%;
+}
+
+
+/*allongement du bouton de la recherche avancée*/
+.dropdown{
+	a {
+		width: 100%;
+	}
+}
+
+.btn {
+  position: relative;
+  font-size: 0.875rem;
+  font-family: "Big Noodles";
+  font-style: normal;
+  text-align: center;
+  border-radius: 2px;
+  outline: none;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.btn-base-1 {
+  color: #FFF;
+  background-color: #3452ff;
+  border: 1px solid #3452ff;
+}
+
+.btn-base-1:active,
+.btn-base-1:focus,
+.btn-base-1:hover {
+  background-color: #0127ff;
+  color: #FFF;
 }

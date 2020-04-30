@@ -1,21 +1,17 @@
 import 'bootstrap';
-
 import "../sass/styles.scss";
-import moment from "moment";
+import routes from "./routes";
 
-console.log("salut")
+let gameArgument;
 
-console.log(moment().format("MMMM Do YYYY"));
-console.log(moment("20111031", "YYYYMMDD").fromNow()); // 8 years ago
-console.log(moment().subtract(10, "days").calendar()); // 05/27/2019
+const setRoute = () => {
+  let path = window.location.hash.substring(1).split("/");
+  gameArgument = path[1] || "";
 
-console.log("TEST", process.env.DB_HOST);
+  let gameContent = document.getElementById("gameContent");
+  routes[path[0]](gameArgument);
+  return true;
+};
 
-const alert = document.getElementById('alert');
-
-alert.innerHTML += `
-
-<div class="alert alert-primary" role="alert">
-  This is a primary alert—check it out!!
-</div>
-`;
+window.addEventListener("hashchange", () => setRoute());
+window.addEventListener("DOMContentLoaded", () => setRoute());

@@ -1561,6 +1561,42 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 
 /***/ }),
 
+/***/ "./src/js/gameDetail.js":
+/*!******************************!*\
+  !*** ./src/js/gameDetail.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar GameDetail = function GameDetail(id) {\n  var preparePage = function preparePage() {\n    var cleanedArgument = id.replace(/\\s+/g, \"-\");\n    var articleContent = \"\";\n\n    var fetchGame = function fetchGame(url, id) {\n      var finalURL = url + id;\n      fetch(\"\".concat(finalURL)).then(function (response) {\n        return response.json();\n      }).then(function (response) {\n        console.log(response);\n        return response;\n      }).then(function (response) {\n        var name = response.name,\n            released = response.released,\n            description = response.description,\n            clip = response.clip;\n        var articleDOM = document.querySelector(\".page-detail .article\");\n        video.src = clip.clip;\n        articleDOM.querySelector(\"h3.title\").innerHTML = name;\n        articleDOM.querySelector(\"p.release-date span\").innerHTML = released;\n        articleDOM.querySelector(\"p.description\").innerHTML = description;\n      });\n    };\n\n    fetchGame(\"https://api.rawg.io/api/games/\", cleanedArgument);\n  };\n\n  var render = function render() {\n    gameContent.innerHTML = \"\\n      <section class=\\\"page-detail\\\">\\n      <video controls=\\\"controls\\\" src=\\\"\\\" id=\\\"video\\\"></video>\\n        <div class=\\\"article\\\">\\n          <h3 class=\\\"title\\\"></h3>\\n          <p class=\\\"release-date\\\">Release date : <span></span></p>\\n          <p class=\\\"description\\\"></p>\\n        </div>\\n      </section>\\n    \";\n    preparePage();\n  };\n\n  render();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GameDetail);\n\n//# sourceURL=webpack:///./src/js/gameDetail.js?");
+
+/***/ }),
+
+/***/ "./src/js/gameList.js":
+/*!****************************!*\
+  !*** ./src/js/gameList.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar GameList = function GameList() {\n  var argument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : \"\";\n\n  var preparePage = function preparePage() {\n    var cleanedArgument = argument.replace(/\\s+/g, \"-\");\n    var articles = \"\";\n\n    var fetchList = function fetchList(url, argument) {\n      var finalURL = url;\n\n      if (argument) {\n        finalURL = url + \"?search=\" + argument;\n      }\n\n      console.log(finalURL);\n      fetch(\"\".concat(finalURL)).then(function (response) {\n        return response.json();\n      }).then(function (response) {\n        console.log(response);\n        return response;\n      }).then(function (response) {\n        response.results.forEach(function (article) {\n          articles += \"\\n                  <div class=\\\"cardGame\\\">\\n                    <h3>\".concat(article.name, \"</h3>\\n                    <h2>\").concat(article.released, \"</h2>\\n                    <a href = \\\"#gamedetail/\").concat(article.id, \"\\\">\").concat(article.id, \"</a>\\n                  </div>\\n                \");\n        });\n        document.querySelector(\".page-list .articles\").innerHTML = articles;\n      });\n    };\n\n    fetchList(\"https://api.rawg.io/api/games\", cleanedArgument);\n  };\n\n  var render = function render() {\n    gameContent.innerHTML = \"\\n      <section class=\\\"page-list\\\">\\n        <div class=\\\"articles\\\">...loading</div>\\n      </section>\\n    \";\n    preparePage();\n  };\n\n  render();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GameList);\n\n//# sourceURL=webpack:///./src/js/gameList.js?");
+
+/***/ }),
+
+/***/ "./src/js/home.js":
+/*!************************!*\
+  !*** ./src/js/home.js ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ \"./node_modules/moment/moment.js\");\n/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);\n\n\nvar Home = function Home() {\n  var argument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : \"\";\n  var time = moment__WEBPACK_IMPORTED_MODULE_0___default()().format().slice(0, 10);\n  var future_time = moment__WEBPACK_IMPORTED_MODULE_0___default()().add(1, 'years').format().slice(0, 10);\n\n  var preparePage = function preparePage() {\n    var articles = \"\";\n\n    var fetchList = function fetchList(url) {\n      var URL = url;\n      console.log(URL);\n      fetch(\"\".concat(URL)).then(function (response) {\n        return response.json();\n      }).then(function (response) {\n        console.log(response);\n        return response;\n      }).then(function (response) {\n        response.results.forEach(function (article) {\n          articles += \"\\n                <a href=\\\"#gamedetail/\".concat(article.id, \"\\\" class=\\\"cardGame\\\">\\n                      <img class=\\\"card-img-top\\\" width=\\\"75\\\" height=\\\"250\\\" src=\\\"\").concat(article.background_image, \"\\\" alt=\\\"Card image cap\\\">\\n                  <div class=\\\"card-body\\\">\\n                      <h3 class=\\\"card-text\\\">\").concat(article.name, \"</h3>\\n                      <p>\").concat(article.released, \"</p>\\n                  </div>\\n                </a>\\n                \");\n        });\n        document.querySelector(\".page-list .articles\").innerHTML = articles;\n      });\n    };\n\n    fetchList(\"https://api.rawg.io/api/games?dates=\".concat(time, \",\").concat(future_time, \"&&page_size=27\")); //game à venir sur un an, page_list en fetch 27, découpage par 9 à prédéfinir\n  }; // ordering=-rating&page=1&page_size=${entryLimit}\n\n\n  var render = function render() {\n    gameContent.innerHTML = \"\\n      <section class=\\\"page-list\\\">\\n        <div class=\\\"articles\\\">...loading</div>\\n      </section>\\n    \";\n    preparePage();\n  };\n\n  render();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Home);\n\n//# sourceURL=webpack:///./src/js/home.js?");
+
+/***/ }),
+
 /***/ "./src/js/index.js":
 /*!*************************!*\
   !*** ./src/js/index.js ***!
@@ -1569,7 +1605,19 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _sass_styles_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sass/styles.scss */ \"./src/sass/styles.scss\");\n/* harmony import */ var _sass_styles_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_sass_styles_scss__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ \"./node_modules/moment/moment.js\");\n/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\nconsole.log(\"salut\");\nconsole.log(moment__WEBPACK_IMPORTED_MODULE_2___default()().format(\"MMMM Do YYYY\"));\nconsole.log(moment__WEBPACK_IMPORTED_MODULE_2___default()(\"20111031\", \"YYYYMMDD\").fromNow()); // 8 years ago\n\nconsole.log(moment__WEBPACK_IMPORTED_MODULE_2___default()().subtract(10, \"days\").calendar()); // 05/27/2019\n\nconsole.log(\"TEST\", \"127.0.0.1\");\nvar alert = document.getElementById('alert');\nalert.innerHTML += \"\\n\\n<div class=\\\"alert alert-primary\\\" role=\\\"alert\\\">\\n  This is a primary alert\\u2014check it out!\\n</div>\\n\";\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _sass_styles_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sass/styles.scss */ \"./src/sass/styles.scss\");\n/* harmony import */ var _sass_styles_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_sass_styles_scss__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ \"./src/js/routes.js\");\n\n\n\nvar gameArgument;\n\nvar setRoute = function setRoute() {\n  var path = window.location.hash.substring(1).split(\"/\");\n  gameArgument = path[1] || \"\";\n  var gameContent = document.getElementById(\"gameContent\");\n  _routes__WEBPACK_IMPORTED_MODULE_2__[\"default\"][path[0]](gameArgument);\n  return true;\n};\n\nwindow.addEventListener(\"hashchange\", function () {\n  return setRoute();\n});\nwindow.addEventListener(\"DOMContentLoaded\", function () {\n  return setRoute();\n});\n\n//# sourceURL=webpack:///./src/js/index.js?");
+
+/***/ }),
+
+/***/ "./src/js/routes.js":
+/*!**************************!*\
+  !*** ./src/js/routes.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home */ \"./src/js/home.js\");\n/* harmony import */ var _gameList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gameList */ \"./src/js/gameList.js\");\n/* harmony import */ var _gameDetail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./gameDetail */ \"./src/js/gameDetail.js\");\n\n\n\nvar routes = {\n  \"\": _home__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  \"gamelist\": _gameList__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  \"gamedetail\": _gameDetail__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (routes);\n\n//# sourceURL=webpack:///./src/js/routes.js?");
 
 /***/ }),
 
