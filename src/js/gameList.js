@@ -32,6 +32,13 @@ const GameList = (argument = "") => {
         })
         .then((response) => {
           response.results.forEach((article, i) => {
+
+
+            if (article.parent_platforms === undefined) {
+              return
+            }
+
+            
             article.parent_platforms.forEach((x) => {
             let variable = document.getElementById(`special_platforms${i}`)
             console.log("variable = " + variable)
@@ -74,30 +81,5 @@ const GameList = (argument = "") => {
 
   render();
 };
-                    // response.results.forEach((article, i) => {
-                      // article.parent_platforms.forEach((x) => {
 
-                      //   // console.log(articles);
-
-                      //   // document.getElementById(`special_platforms${i}`);
-                      //   console.log(document.getElementById("special_platforms0"));
-
-                      //   if (x.platform.slug === "pc"){
-                      //     articles += `
-                      //     <i class="fas fa-laptop"></i>
-                      //     `;
-                      //   }
-
-                      //   if (x.platform.slug === "playstation"){
-                      //     articles += `
-                      //     <i class="fab fa-playstation"></i>
-                      //     `;
-                      //   }
-
-                      //   if (x.platform.slug === "xbox"){
-                      //      articles += `
-                      //     <i class="fab fa-xbox"></i>
-                      //      `;
-                      //   }
-                      // })
 export default GameList;

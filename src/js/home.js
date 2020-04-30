@@ -20,7 +20,7 @@ const Home = (argument = "") => {
 				    	return response;
 				    	})
         .then((response) => {
-          response.results.forEach((article) => {
+          response.results.forEach((article, i) => {
 
             articles += `
                 <a href="#gamedetail/${article.id}" class="cardGame">
@@ -28,12 +28,51 @@ const Home = (argument = "") => {
                   <div class="card-body">
                       <h2 class="card-text">${article.name}</h2>
                       <p class="text-center">${article.released}</p>
+                      <p class="text-center">${article.rating}</p>
+                      <div id="special_platforms${i}"></div>
                   </div>
                 </a>
                 `;
           });
           document.querySelector(".page-list .articles").innerHTML = articles;
-        });
+          return response;
+        })
+
+        .then((response) => {
+          console.log(response.results)
+          response.results.forEach((article, i) => {
+            
+            console.log(article.parent_platforms)
+
+            if (article.parent_platforms === undefined) {
+              return
+            }
+
+            article.parent_platforms.forEach((x) => {
+            let variable = document.getElementById(`special_platforms${i}`)
+            console.log("variable = " + variable)
+                        if (x.platform.slug === "pc"){
+                          variable.innerHTML += `
+                          <i class="fas fa-laptop"></i>
+                          `;
+                        }
+
+                        if (x.platform.slug === "playstation"){
+                          variable.innerHTML += `
+                          <i class="fab fa-playstation"></i>
+                          `;
+                        }
+
+                        if (x.platform.slug === "xbox"){
+                           variable.innerHTML += `
+                          <i class="fab fa-xbox"></i>
+                           `;
+                        }
+
+            })
+          })
+        })
+
     };
 
     fetchList(`https://api.rawg.io/api/games?dates=${time},${future_time}&&page_size=27`);
