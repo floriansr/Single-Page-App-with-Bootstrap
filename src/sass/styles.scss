@@ -37,14 +37,14 @@ form {
 }
 
 h3 {
-	color: $deep_ocean;
+	color: $white;
 	font-family: "Big Noodles";
 }
 
 
 header {
 
-	 a {
+	a {
 	font-size: 2rem;
 	color: $deep_ocean;
 	font-family: "Big Noodles";
@@ -56,6 +56,11 @@ h1 {
 	font-family: "Big Noodles";
 }
 
+h2 {
+	color: $deep_ocean;
+	font-family: "Big Noodles";
+}
+
 label {
 	color: $deep_ocean;
 	font-family: "Big Noodles";
@@ -63,7 +68,6 @@ label {
 }
 
 p {
-  color: $deep_ocean;
   font-family: "Big Noodles";
 }
 
@@ -77,12 +81,6 @@ video {
 	width: 100%;
 }
 
-div {
- h3 {
-	color: $deep_ocean;
-	font-family: "Big Noodles";
-	}
-}
 
 .container {
 
@@ -109,6 +107,16 @@ div {
 			  -webkit-transition: all 0.3s linear;
 	  		  transition: all 0.3s linear;
 
+			@media (min-width: 300px) and (max-width: 500px){
+				.cardGame {
+					flex: 0%;
+					max-width: 0%;
+					  .card-img-top {
+			  		  	object-fit: cover;
+			  		  }
+				}
+			}
+
 	  		  .card-img-top {
 	  		  	object-fit: cover;
 	  		  }
@@ -117,7 +125,7 @@ div {
 
 	.page-detail {
 		.article {
-				 color: $metallic_grey;
+				color: $metallic_grey;
   				font-family: "Big Noodles";
 		}
 	}

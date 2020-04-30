@@ -24,9 +24,9 @@ const Home = (argument = "") => {
 
             articles += `
                 <a href="#gamedetail/${article.id}" class="cardGame">
-                      <img class="card-img-top" width="75" height="250" src="${article.background_image}" alt="Card image cap">
+                      <img class="card-img-top" src="${article.background_image}" alt="Card image cap">
                   <div class="card-body">
-                      <h3 class="card-text">${article.name}</h3>
+                      <h2 class="card-text">${article.name}</h2>
                       <p>${article.released}</p>
                   </div>
                 </a>

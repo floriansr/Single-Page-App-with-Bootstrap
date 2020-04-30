@@ -9904,7 +9904,7 @@ form {
 }
 
 h3 {
-  color: #040B1C;
+  color: white;
   font-family: "Big Noodles";
 }
 
@@ -9919,6 +9919,11 @@ h1 {
   font-family: "Big Noodles";
 }
 
+h2 {
+  color: #040B1C;
+  font-family: "Big Noodles";
+}
+
 label {
   color: #040B1C;
   font-family: "Big Noodles";
@@ -9926,7 +9931,6 @@ label {
 }
 
 p {
-  color: #040B1C;
   font-family: "Big Noodles";
 }
 
@@ -9938,11 +9942,6 @@ a {
 
 video {
   width: 100%;
-}
-
-div h3 {
-  color: #040B1C;
-  font-family: "Big Noodles";
 }
 
 .container .page-list .articles {
@@ -9969,6 +9968,15 @@ div h3 {
   margin-bottom: 2rem;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
+}
+@media (min-width: 300px) and (max-width: 500px) {
+  .container .page-list .articles .cardGame .cardGame {
+    flex: 0%;
+    max-width: 0%;
+  }
+  .container .page-list .articles .cardGame .cardGame .card-img-top {
+    object-fit: cover;
+  }
 }
 .container .page-list .articles .cardGame .card-img-top {
   object-fit: cover;
